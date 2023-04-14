@@ -1,0 +1,6 @@
+{
+    "require": {
+        "unrealircd/unrealircd-rpc": "dev-main",
+        "phpmailer/phpmailer": "^6.7"
+    }
+}

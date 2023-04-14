@@ -1,0 +1,60 @@
+<?php
+/**
+ * SQL IP address or hostname
+* You may specify a unix domain socket directory address
+* E.g:
+*     $config["mysql"]["host"] = "/path/to/unix/domain/socket";
+*
+* Path to unix socket MUST start with a slash "/"
+*/
+    $config["mysql"]["host"] = "127.0.0.1";
+
+    /**
+     * SQL Dabase name
+     */
+    $config["mysql"]["database"] = "";
+
+    /**
+     * SQL Username
+     */
+    $config["mysql"]["username"] = "";
+
+    /**
+     * SQL Password
+     */
+    $config["mysql"]["password"] = "";
+
+
+/**
+ * SQL Table prefix
+ * You should only need to change this if you have already have one
+ * or more instances of webpanel on the same database
+ */
+    $config["mysql"]["table_prefix"] = "unrealircd_";
+
+
+    /**
+     *  The RPC User name as defined in your unrealircd.conf
+     *  https://www.unrealircd.org/docs/UnrealIRCd_webpanel#Configuring_UnrealIRCd
+    */
+    $config["unrealircd"]["rpc_user"] = 'Api_user';
+
+    /**
+     *  The RPC User password as defined in your unrealircd.conf
+    */
+    $config["unrealircd"]["rpc_password"] = 'Api_password';
+
+    /** 
+     * The host IP or name of your RPC server
+    */
+    $config["unrealircd"]["host"] = '127.0.0.1';
+
+    /**
+     * The port of your RPC server as defined in your unrealircd.conf
+    */
+    $config["unrealircd"]["port"] = '8001';
+
+    /** 
+     * You should set this to true, if your RPC server is not on your local host
+    */
+    $config["unrealircd"]["tls_verify_cert"] = false;
