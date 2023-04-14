@@ -1,4 +1,4 @@
-UnrealIRCd RPC SQL
+UnrealIRCd SQL Stats
 ==============
 
 This way, it would be possible to display the desired statistics on the websites.
@@ -12,12 +12,12 @@ Installation
 ``composer require unrealircd/unrealircd-rpc:dev-main``
 - Edit the file src/config.php.
 
-- Run your cron job on /home/folder/unrealircd-rpc-sql/src/backup.php
+- Run your cron job on /home/folder/unrealircd-rpc-sql/src/stats.php
 
 
 Delete your tables with every UnrealIRCd update
 ------------
-If UnrealIRCd creates new keys and values in json-rpc, then delete your tables that start with "unrealircd_". Note that the tables are recreated automatically using the same columns as there are in the json-rpc.
+If UnrealIRCd creates new keys and values in JSON logging, then delete your tables that start with "unrealircd_". Note that the tables are recreated automatically using the same columns as there are in the JSON logging.
 
 
 Useful select
