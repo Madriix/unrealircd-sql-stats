@@ -12,7 +12,7 @@ Installation
 ``composer require unrealircd/unrealircd-rpc:dev-main``
 - Edit the file src/config.php.
 
-- Run your cron job on /home/folder/unrealircd-rpc-sql/src/stats.php
+- Run your cron job on /home/folder/unrealircd-sql-stats/src/stats.php
 
 
 Delete your tables with every UnrealIRCd update
