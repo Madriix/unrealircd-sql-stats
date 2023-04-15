@@ -45,4 +45,7 @@ Useful select
 
 The "FIND_IN_SET" function searches for the string '#Channel2' in the "channels" column and returns the position of the first occurrence in the string. If the string is not found, the function returns 0. The "FIND_IN_SET" function only works if the values are separated by commas, it will not work for other delimiters.
 
+Here is an equivalent query :
+>``SELECT name FROM unrealircd_users WHERE channels REGEXP '(^|,)#Channel2(,|$)' ``
+
 * Many other things
