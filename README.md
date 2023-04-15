@@ -27,7 +27,7 @@ Useful select
 * Display the number of users on the irc server : 
 >``SELECT count(*) as number FROM `unrealircd_users` ``
 * Display the list of channels but not those that have +s mode : 
->``SELECT * FROM `unrealircd_channels` WHERE modes not like '%s%'  ``
+>``SELECT * FROM `unrealircd_channels` WHERE BINARY modes not like '%s%' ``
 * Display the number of users on a channel: 
 >``SELECT num_users FROM `unrealircd_channels` WHERE name='#vintage' ``
 * Check if a nickname is blacklisted for example before a user registers to become a member : 
