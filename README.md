@@ -37,5 +37,5 @@ Useful select
 * This query selects all usernames from the "unrealircd_users" table where channel #Channel2 is present in the comma separated "channels" column: 
 >``SELECT name FROM unrealircd_users WHERE FIND_IN_SET('#Channel2', channels) > 0; ``
 
-'* The "FIND_IN_SET" function searches for the string '#Channel2' in the "channels" column and returns the position of the first occurrence in the string. If the string is not found, the function returns 0.
+> The "FIND_IN_SET" function searches for the string '#Channel2' in the "channels" column and returns the position of the first occurrence in the string. If the string is not found, the function returns 0.
 * Many other things
