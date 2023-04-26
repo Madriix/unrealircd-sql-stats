@@ -5,8 +5,10 @@
 
     This way, it would be possible to display the desired statistics on the websites.
 */
-
-require_once "config.php";
+if (file_exists('config.php') )
+    require_once "config.php";
+else
+    exit("The config.php file does not exist. Please configure the config.php.sample file and rename it to config.php.");
 
 require dirname(__DIR__) . '/vendor/autoload.php';
 
@@ -24,4 +26,4 @@ require_once "tables/unrealircd_channels.php";
 require_once "tables/unrealircd_spamfilter.php";
 require_once "tables/unrealircd_servers.php";
 require_once "tables/unrealircd_name_bans.php";
-
+require_once "tables/unrealircd_server_bans.php";
