@@ -30,7 +30,7 @@ try {
     }
 }
 
-$users = $rpc->user()->getAll();
+$users = $rpc->user()->getAll(4);
 
 /*
 print_r($users);
