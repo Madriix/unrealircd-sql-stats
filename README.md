@@ -66,4 +66,9 @@ The "FIND_IN_SET" function searches for the string '#Channel2' in the "channels"
 SELECT name FROM `unrealircd_users` WHERE channels REGEXP '(^|,)#Channel2(,|$)'
 ```
 
+##### Number of ASN duplicates sorted from largest to smallest, also displaying the asname :
+```sql
+SELECT asn, asname, COUNT(*) AS number_of_duplicates FROM unrealircd_users GROUP BY asn, asname HAVING COUNT(*) > 1 ORDER BY number_of_duplicates DESC; 
+```
+
 ##### Many other things
