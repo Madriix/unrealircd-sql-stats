@@ -1,6 +1,6 @@
 UnrealIRCd SQL Stats
 ==============
-[![Version](https://img.shields.io/badge/UnrealIRCd-6.0.6_or_later-darkgreen.svg)]()
+[![Version](https://img.shields.io/badge/UnrealIRCd-6.1.7_or_later-darkgreen.svg)]()
 [![Unreal](https://img.shields.io/badge/PHP-8.0_or_later-darkgreen.svg)](https://unrealircd.org)
 
 This way, it would be possible to display the desired statistics on the websites.
@@ -17,9 +17,9 @@ Installation
 - Run your cron job on ``/home/folder/unrealircd-sql-stats/src/stats.php`` throwing it every 1 or 3 minutes.
 
 
-Delete your tables with every UnrealIRCd update
+<span style="color:red">Delete your tables with every UnrealIRCd update</span>
 ------------
-If UnrealIRCd creates new keys and values in JSON logging, then delete your tables that start with "unrealircd_". Note that the tables are recreated automatically using the same columns as there are in the JSON logging.
+<span style="color:red">If UnrealIRCd creates new keys and values in JSON logging, then delete your tables that start with "unrealircd_". Note that the tables are recreated automatically using the same columns as there are in the JSON logging.</span>
 
 
 Useful select
