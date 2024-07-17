@@ -17,9 +17,9 @@ Installation
 - Run your cron job on ``/home/folder/unrealircd-sql-stats/src/stats.php`` throwing it every 1 or 3 minutes.
 
 
-<span style="color:red">Delete your tables with every UnrealIRCd update</span>
+-Delete your tables with every UnrealIRCd update
 ------------
-<span style="color:red">If UnrealIRCd creates new keys and values in JSON logging, then delete your tables that start with "unrealircd_". Note that the tables are recreated automatically using the same columns as there are in the JSON logging.</span>
+-If UnrealIRCd creates new keys and values in JSON logging, then delete your tables that start with "unrealircd_". Note that the tables are recreated automatically using the same columns as there are in the JSON logging.
 
 
 Useful select
