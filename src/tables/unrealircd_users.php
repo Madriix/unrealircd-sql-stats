@@ -17,6 +17,8 @@ try {
             `hostname` varchar(255) NOT NULL,
             `ip` varchar(255) NOT NULL,
             `country_code` varchar(2) NOT NULL,
+            `asn` varchar(10) NOT NULL,
+            `asname` varchar(255) NOT NULL,
             `connected_since` varchar(255) NOT NULL,
             `idle_since` varchar(255) NOT NULL,
             `idle` varchar(255) NOT NULL,
@@ -30,12 +32,13 @@ try {
     }
 }
 
-$users = $rpc->user()->getAll(4);
+$users = $rpc->user()->getAll(4); 
+/* https://bugs.unrealircd.org/view.php?id=6327 */
 
 /*
 print_r($users);
-exit;
-*/
+exit;*/
+
 
 $stmt = $pdo->prepare("TRUNCATE TABLE " . $config["mysql"]["table_prefix"] . "users");
 $stmt->execute();
@@ -53,6 +56,8 @@ try {
         $hostname           = $user->hostname ?? '';
         $ip                 = $user->ip ?? '';
         $country_code       = $user->geoip->country_code ?? '';
+        $asn                = $user->geoip->asn ?? '';
+        $asname             = $user->geoip->asname ?? '';
         $connected_since    = $user->connected_since ?? '';
         $idle_since         = $user->idle_since ?? '';
         $idle               = abs(strtotime($connected_since) - strtotime($idle_since));
@@ -67,8 +72,8 @@ try {
         }
 
         
-        $prep = $pdo->prepare("INSERT INTO " . $config["mysql"]["table_prefix"] . "users (id, id_user, name, username, realname, vhost, account, reputation, hostname, ip, country_code, connected_since, idle_since, idle, modes, channels) 
-        VALUES (:id, :id_user, :name, :username, :realname, :vhost, :account, :reputation, :hostname, :ip, :country_code, :connected_since, :idle_since, :idle, :modes, :channels)");
+        $prep = $pdo->prepare("INSERT INTO " . $config["mysql"]["table_prefix"] . "users (id, id_user, name, username, realname, vhost, account, reputation, hostname, ip, country_code, asn, asname, connected_since, idle_since, idle, modes, channels) 
+        VALUES (:id, :id_user, :name, :username, :realname, :vhost, :account, :reputation, :hostname, :ip, :country_code, :asn, :asname, :connected_since, :idle_since, :idle, :modes, :channels)");
         $prep->execute([
             "id" => '',
             "id_user" => $id,
@@ -81,6 +86,8 @@ try {
             "hostname" => $hostname, 
             "ip" => $ip, 
             "country_code" => $country_code, 
+            "asn" => $asn, 
+            "asname" => $asname, 
             "connected_since" => $connected_since, 
             "idle_since" => $idle_since,
             "idle" => $idle,
@@ -105,6 +112,8 @@ try {
             `hostname` varchar(255) NOT NULL,
             `ip` varchar(255) NOT NULL,
             `country_code` varchar(2) NOT NULL,
+            `asn` varchar(10) NOT NULL,
+            `asname` varchar(255) NOT NULL,
             `connected_since` varchar(255) NOT NULL,
             `idle_since` varchar(255) NOT NULL,
             `idle` varchar(255) NOT NULL,
