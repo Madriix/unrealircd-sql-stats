@@ -41,7 +41,7 @@ SELECT * FROM `unrealircd_channels` WHERE BINARY modes not like '%s%'
 
 ##### Display the number of users on a channel: 
 ```sql
-SELECT num_users FROM `unrealircd_channels` WHERE name='#vintage'
+SELECT num_users FROM `unrealircd_channels` WHERE name='#quizz'
 ```
 
 ##### Check if a nickname is blacklisted for example before a user registers to become a member : 
@@ -68,7 +68,13 @@ SELECT name FROM `unrealircd_users` WHERE channels REGEXP '(^|,)#Channel2(,|$)'
 
 ##### Number of ASN duplicates sorted from largest to smallest, also displaying the asname :
 ```sql
-SELECT country_code, asn, asname, COUNT(*) AS number_of_duplicates FROM unrealircd_users GROUP BY asn HAVING COUNT(*) > 1 ORDER BY number_of_duplicates DESC; 
+SELECT country_code, asn, asname, COUNT(*) AS number_of_duplicates FROM unrealircd_users GROUP BY asn HAVING COUNT(*) > 1 ORDER BY number_of_duplicates DESC
+```
+
+and with the average of reputations:
+
+```sql
+SELECT country_code, asn, asname, COUNT(*) AS number_of_duplicates, AVG(reputation) AS average_reputation FROM unrealircd_users GROUP BY country_code, asn, asname HAVING COUNT(*) > 1 ORDER BY number_of_duplicates DESC
 ```
 
 ##### Many other things
