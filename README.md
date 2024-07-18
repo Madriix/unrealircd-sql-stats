@@ -14,7 +14,7 @@ Installation
 ``composer require unrealircd/unrealircd-rpc:dev-main``
 - Edit the file src/config.php.
 
-- Run your cron job on ``/home/folder/unrealircd-sql-stats/src/stats.php`` throwing it every 1 or 3 minutes.
+- Run your cron job on ``/home/folder/unrealircd-sql-stats/src/stats.php`` throwing it every 1, 3 or 5 minutes.
 
 
 🔴 Delete your tables with every UnrealIRCd update
@@ -68,7 +68,7 @@ SELECT name FROM `unrealircd_users` WHERE channels REGEXP '(^|,)#Channel2(,|$)'
 
 ##### Number of ASN duplicates sorted from largest to smallest, also displaying the asname :
 ```sql
-SELECT asn, asname, COUNT(*) AS number_of_duplicates FROM unrealircd_users GROUP BY asn, asname HAVING COUNT(*) > 1 ORDER BY number_of_duplicates DESC; 
+SELECT country_code, asn, asname, COUNT(*) AS number_of_duplicates FROM unrealircd_users GROUP BY asn HAVING COUNT(*) > 1 ORDER BY number_of_duplicates DESC; 
 ```
 
 ##### Many other things
