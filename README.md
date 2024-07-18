@@ -77,4 +77,7 @@ and with the average of reputations:
 SELECT country_code, asn, asname, COUNT(*) AS number_of_duplicates, AVG(reputation) AS average_reputation FROM unrealircd_users GROUP BY country_code, asn, asname HAVING COUNT(*) > 1 ORDER BY number_of_duplicates DESC
 ```
 
+I am not 100% certain, but the higher the number of duplicates with a very low average reputation, the more likely it is that these could be "passoire" French expression close to "not solid" or "which will soon break for nothing" IPs, or that the users are not very engaged, or that the ISP frequently changes the user's IP addresses. It could also be an IPv6/64 address that remains the same, but the last four segments change constantly.
+Additionally, if there is only one user with a single ASN or two from another country with a very low reputation, it is probably a new user (especially the IP). It might be worth filtering and scanning it, as it could be a VPN with a country very far from ours, or its ASN matches a hosting service provider.
+
 ##### Many other things
