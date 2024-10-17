@@ -23,7 +23,8 @@ try {
             `idle_since` varchar(255) NOT NULL,
             `idle` varchar(255) NOT NULL,
             `modes` varchar(255) NOT NULL,
-            `channels` TEXT NOT NULL
+            `channels` TEXT NOT NULL,
+            `security_groups` TEXT NOT NULL
           ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;'
     ];
 
@@ -71,9 +72,17 @@ try {
             }
         }
 
+        $security_groups = $user->user->{'security-groups'} ?? '';
+        $sg = '';
+        if ($security_groups!="") {
+            foreach ($security_groups as $key => $value ) {
+                $sg .= ",".$value;
+            }
+        }
+
         
-        $prep = $pdo->prepare("INSERT INTO " . $config["mysql"]["table_prefix"] . "users (id, id_user, name, username, realname, vhost, account, reputation, hostname, ip, country_code, asn, asname, connected_since, idle_since, idle, modes, channels) 
-        VALUES (:id, :id_user, :name, :username, :realname, :vhost, :account, :reputation, :hostname, :ip, :country_code, :asn, :asname, :connected_since, :idle_since, :idle, :modes, :channels)");
+        $prep = $pdo->prepare("INSERT INTO " . $config["mysql"]["table_prefix"] . "users (id, id_user, name, username, realname, vhost, account, reputation, hostname, ip, country_code, asn, asname, connected_since, idle_since, idle, modes, channels, security_groups) 
+        VALUES (:id, :id_user, :name, :username, :realname, :vhost, :account, :reputation, :hostname, :ip, :country_code, :asn, :asname, :connected_since, :idle_since, :idle, :modes, :channels, :security_groups)");
         $prep->execute([
             "id" => '',
             "id_user" => $id,
@@ -92,7 +101,8 @@ try {
             "idle_since" => $idle_since,
             "idle" => $idle,
             "modes" => $modes,
-            "channels" => ltrim($chans, ",")
+            "channels" => ltrim($chans, ","),
+            "security_groups" => ltrim($sg, ",")
         ]);
     }
 } catch (\PDOException $e) {
@@ -118,7 +128,8 @@ try {
             `idle_since` varchar(255) NOT NULL,
             `idle` varchar(255) NOT NULL,
             `modes` varchar(255) NOT NULL,
-            `channels` TEXT NOT NULL
+            `channels` TEXT NOT NULL,
+            `security_groups` TEXT NOT NULL
           ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;'
     ];
 
