@@ -24,7 +24,9 @@ try {
             `idle` varchar(255) NOT NULL,
             `modes` varchar(255) NOT NULL,
             `channels` TEXT NOT NULL,
-            `security_groups` TEXT NOT NULL
+            `security_groups` TEXT NOT NULL,
+            `away_reason` TEXT NOT NULL,
+            `away_since` TEXT NOT NULL
           ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;'
     ];
 
@@ -80,9 +82,12 @@ try {
             }
         }
 
+        $away_reason = $user->user->{'away_reason'} ?? '';
+        $away_since = $user->user->{'away_since'} ?? '';
+
         
-        $prep = $pdo->prepare("INSERT INTO " . $config["mysql"]["table_prefix"] . "users (id, id_user, name, username, realname, vhost, account, reputation, hostname, ip, country_code, asn, asname, connected_since, idle_since, idle, modes, channels, security_groups) 
-        VALUES (:id, :id_user, :name, :username, :realname, :vhost, :account, :reputation, :hostname, :ip, :country_code, :asn, :asname, :connected_since, :idle_since, :idle, :modes, :channels, :security_groups)");
+        $prep = $pdo->prepare("INSERT INTO " . $config["mysql"]["table_prefix"] . "users (id, id_user, name, username, realname, vhost, account, reputation, hostname, ip, country_code, asn, asname, connected_since, idle_since, idle, modes, channels, security_groups, away_reason, away_since) 
+        VALUES (:id, :id_user, :name, :username, :realname, :vhost, :account, :reputation, :hostname, :ip, :country_code, :asn, :asname, :connected_since, :idle_since, :idle, :modes, :channels, :security_groups, :away_reason, :away_since)");
         $prep->execute([
             "id" => '',
             "id_user" => $id,
@@ -102,7 +107,9 @@ try {
             "idle" => $idle,
             "modes" => $modes,
             "channels" => ltrim($chans, ","),
-            "security_groups" => ltrim($sg, ",")
+            "security_groups" => ltrim($sg, ","),
+            "away_reason" => $away_reason,
+            "away_since" => $away_since
         ]);
     }
 } catch (\PDOException $e) {
@@ -129,7 +136,9 @@ try {
             `idle` varchar(255) NOT NULL,
             `modes` varchar(255) NOT NULL,
             `channels` TEXT NOT NULL,
-            `security_groups` TEXT NOT NULL
+            `security_groups` TEXT NOT NULL,
+            `away_reason` TEXT NOT NULL,
+            `away_since` TEXT NOT NULL
           ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;'
     ];
 
