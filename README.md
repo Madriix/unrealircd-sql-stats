@@ -1,6 +1,6 @@
 UnrealIRCd SQL Stats
 ==============
-[![Version](https://img.shields.io/badge/UnrealIRCd-6.1.7_or_later-darkgreen.svg)]()
+[![Version](https://img.shields.io/badge/UnrealIRCd-6.2.1_or_later-darkgreen.svg)]()
 [![Unreal](https://img.shields.io/badge/PHP-8.0_or_later-darkgreen.svg)](https://unrealircd.org)
 
 This way, it would be possible to display the desired statistics on the websites.
